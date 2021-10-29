@@ -48,6 +48,7 @@ Then to use this in a card place the following in your entity card:
 | reverseButtons | Boolean | No | false | set to true to reverse the button order |
 | isTwoSpeedFan | Boolean | No | false | Set to true to hide the middle percent button |
 | sendStateWithSpeed | Boolean | No | false | Used only for certain firmware that requires the State command be sent with the Speed command  |
+| sendStateOnlyWhenOff | Boolean | No | false | If sendStateWithSpeed is true, only send the State command if the device is currently off  |
 | allowDisablingButtons | Boolean | No | true | Set to false to prevent buttons being disabled |
 | width | String | No | 30px | A custom width for the buttons |
 | height | String | No | 30px | A custom height for the buttons |

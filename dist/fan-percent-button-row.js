@@ -106,6 +106,7 @@ class CustomFanPercentRow extends Polymer.Element {
 			reverseButtons: false,
 			isTwoSpeedFan: false,
 			sendStateWithSpeed: false,
+			sendStateOnlyWhenOff: false,
 			allowDisablingButtons: true,
 			offPercentage: 0,
 			lowPercentage: 33,
@@ -135,6 +136,7 @@ class CustomFanPercentRow extends Polymer.Element {
 		const revButtons = config.reverseButtons;
 		const twoSpdFan = config.isTwoSpeedFan;
 		const sendStateWithSpeed = config.sendStateWithSpeed;
+		const sendStateOnlyWhenOff = config.sendStateOnlyWhenOff;
 		const allowDisable = config.allowDisablingButtons;
 		const buttonWidth = config.width;
 		const buttonHeight = config.height;
@@ -347,19 +349,31 @@ class CustomFanPercentRow extends Polymer.Element {
 			this.hass.callService('fan', 'set_percentage', param);
 		} else if (level == 'low') {
 			if(this._config.sendStateWithSpeed){
-			this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
+				if (stateObj.state == 'off' && this._config.sendStateOnlyWhenOff) {
+					this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
+				} else if (!this._config.sendStateOnlyWhenOff) {
+					this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
+				}
 			}
 			param.percentage = this._lowSP;
 			this.hass.callService('fan', 'set_percentage', param);
 		} else if (level == 'medium') {
 			if(this._config.sendStateWithSpeed){
-			this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
+				if (stateObj.state == 'off' && this._config.sendStateOnlyWhenOff) {
+					this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
+				} else if (!this._config.sendStateOnlyWhenOff) {
+					this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
+				}
 			}
 			param.percentage = this._medSP;
 			this.hass.callService('fan', 'set_percentage', param);
 		} else if (level == 'high') {
 			if(this._config.sendStateWithSpeed){
-			this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
+				if (stateObj.state == 'off' && this._config.sendStateOnlyWhenOff) {
+					this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
+				} else if (!this._config.sendStateOnlyWhenOff) {
+					this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
+				}
 			}
 			param.percentage = this._highSP;
 			this.hass.callService('fan', 'set_percentage', param);
