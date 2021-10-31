@@ -349,7 +349,7 @@ class CustomFanPercentRow extends Polymer.Element {
 			this.hass.callService('fan', 'set_percentage', param);
 		} else if (level == 'low') {
 			if(this._config.sendStateWithSpeed){
-				if (stateObj.state == 'off' && this._config.sendStateOnlyWhenOff) {
+				if (this._stateObj.state == 'off' && this._config.sendStateOnlyWhenOff) {
 					this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
 				} else if (!this._config.sendStateOnlyWhenOff) {
 					this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
@@ -359,7 +359,7 @@ class CustomFanPercentRow extends Polymer.Element {
 			this.hass.callService('fan', 'set_percentage', param);
 		} else if (level == 'medium') {
 			if(this._config.sendStateWithSpeed){
-				if (stateObj.state == 'off' && this._config.sendStateOnlyWhenOff) {
+				if (this._stateObj.state == 'off' && this._config.sendStateOnlyWhenOff) {
 					this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
 				} else if (!this._config.sendStateOnlyWhenOff) {
 					this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
@@ -369,7 +369,7 @@ class CustomFanPercentRow extends Polymer.Element {
 			this.hass.callService('fan', 'set_percentage', param);
 		} else if (level == 'high') {
 			if(this._config.sendStateWithSpeed){
-				if (stateObj.state == 'off' && this._config.sendStateOnlyWhenOff) {
+				if (this._stateObj.state == 'off' && this._config.sendStateOnlyWhenOff) {
 					this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
 				} else if (!this._config.sendStateOnlyWhenOff) {
 					this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity});
